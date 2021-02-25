@@ -1,28 +1,47 @@
 <hello name="{{ name }}"></hello>
-<p>
-  Start editing to see some magic happen :)
-</p>
+
+<p *ngIf="winner == 1; then player1Win; else nowin"></p>
+
+<ng-template #player1Win>
+	<p>Player 1 Win</p>
+</ng-template>
+
+<ng-template #nowin>
+	<p></p>
+</ng-template>
+
+<p *ngIf="winner == 2; then player2Win; else nowin"></p>
+
+<ng-template #player2Win>
+	<p>Player 2 Win</p>
+</ng-template>
+
+<ng-template #nowin>
+	<p></p>
+</ng-template>
+
 
 <p *ngIf="flagpemain == 1; then player1; else player2"></p>
 
 <ng-template #player1>
-  <p>Giliran Player 1</p>
+	<p>Giliran Player 1</p>
 </ng-template>
 
 <ng-template #player2>
-  <p>Giliran Player 2</p>
+	<p>Giliran Player 2</p>
 </ng-template>
 
- <div *ngFor="let star of output; let i = index">
-   <div *ngFor="let s of output; let j = index" style="display:inline">
-     {{output[i][j]}}
-   </div>
- </div>
+<div *ngFor="let star of output; let i = index">
+	<div *ngFor="let s of output; let j = index" style="display:inline">
+		{{output[i][j]}}
+	</div>
+</div>
 
 <br/>
 Input Baris:
- <input type="number" [(ngModel)]="baris"/> <br/><br/>
+<input type="number" [(ngModel)]="baris"/> <br/><br/>
  Input Kolom:
- <input type="number" [(ngModel)]="kolom"/><br/><br/>
+<input type="number" [(ngModel)]="kolom"/><br/><br/>
 
- <button (click)="InputPlayer()">Go</button>
+<button (click)="InputPlayer()">Go</button>
+<button style="margin-left: 10px;" (click)="reset()">Reset</button>
